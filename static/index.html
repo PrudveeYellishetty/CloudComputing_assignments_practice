@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NPTEL Practice Arena</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Assessment Examination Center</p>
+        <h1>NPTEL / SWAYAM Practice Arena</h1>
+      </div>
+      <div class="status-strip">
+        <div class="chip" id="questionCounter">Q 0 / 0</div>
+        <div class="chip" id="modeChip">Mode: Immediate Reveal</div>
+        <div class="chip accent" id="timerChip">00:00</div>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="panel mainpanel">
+        <section class="card question-panel">
+          <div class="panel-head">
+            <h2>Question List</h2>
+            <span class="panel-note">Tap a number to jump directly</span>
+          </div>
+          <div id="questionGrid" class="question-grid"></div>
+        </section>
+
+        <div class="exam-frame">
+          <div class="exam-head">
+            <div class="exam-tag">Section-I</div>
+            <div class="exam-text">Practice Session</div>
+          </div>
+
+          <div id="landingView" class="landing">
+            <h2>Mock test setup</h2>
+            <p>Pick how you want answers shown and start a 10-question NPTEL-style practice run. Questions are selected without repeats and biased toward lower asked counts.</p>
+            <ul>
+              <li>Immediate answer reveal or end-of-test reveal</li>
+              <li>Wrong-answer report after submit</li>
+              <li>Dedicated retest from only missed questions</li>
+            </ul>
+          </div>
+
+          <div id="testView" class="test-view hidden">
+            <div class="question-meta">
+              <span id="questionTopic">Question</span>
+              <span id="questionScore">0 marks</span>
+            </div>
+            <h2 id="questionText"></h2>
+            <div id="optionsList" class="options"></div>
+            <div id="feedbackBox" class="feedback hidden"></div>
+            <div class="action-bar">
+              <button id="prevBtn" class="secondary">Previous</button>
+              <button id="nextBtn" class="primary">Next</button>
+              <button id="submitBtn" class="primary danger">Submit Test</button>
+            </div>
+          </div>
+
+          <div id="resultView" class="result-view hidden">
+            <h2>Test Report</h2>
+            <div class="score-card">
+              <div>
+                <p class="score-label">Score</p>
+                <p id="scoreValue" class="score-value">0 / 0</p>
+              </div>
+              <div>
+                <p class="score-label">Accuracy</p>
+                <p id="accuracyValue" class="score-value">0%</p>
+              </div>
+            </div>
+            <div id="wrongSummary" class="wrong-summary"></div>
+          </div>
+        </div>
+      </section>
+
+      <aside class="panel sidebar">
+        <section class="card profile-card">
+          <h2>Profile</h2>
+          <div class="profile-box">
+            <div class="profile-avatar">C1</div>
+            <div>
+              <div class="profile-name">Candidate1</div>
+              <div class="profile-meta">Practice mode enabled</div>
+            </div>
+          </div>
+          <div class="profile-stats">
+            <div>
+              <span>Test mode</span>
+              <strong>Mock NPTEL</strong>
+            </div>
+            <div>
+              <span>Status</span>
+              <strong>Ready</strong>
+            </div>
+          </div>
+        </section>
+
+        <section class="card">
+          <h2>Test Settings</h2>
+          <label class="field">
+            <span>Questions per test</span>
+            <input id="questionCount" type="number" min="1" max="50" value="10" />
+          </label>
+          <label class="field">
+            <span>Answer reveal</span>
+            <select id="revealMode">
+              <option value="immediate">Show after each answer</option>
+              <option value="end">Show at the end only</option>
+            </select>
+          </label>
+          <label class="field">
+            <span>Selection bias</span>
+            <select id="biasMode">
+              <option value="low">Prefer less asked questions</option>
+              <option value="mixed">Balanced random</option>
+            </select>
+          </label>
+          <button id="startBtn" class="primary">Start Practice Test</button>
+          <button id="retryBtn" class="secondary" disabled>Start Wrong-Answer Retest</button>
+        </section>
+
+        <section class="card legend">
+          <h2>Legend</h2>
+          <div class="legend-row"><span class="dot answered"></span> Answered</div>
+          <div class="legend-row"><span class="dot current"></span> Current</div>
+          <div class="legend-row"><span class="dot wrong"></span> Wrong</div>
+          <div class="legend-row"><span class="dot pending"></span> Pending</div>
+        </section>
+      </aside>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
