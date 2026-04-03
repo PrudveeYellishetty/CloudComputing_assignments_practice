@@ -66,7 +66,7 @@ class QuizHandler(SimpleHTTPRequestHandler):
 
 
 def main():
-    port = int(os.environ.get("PORT", "8000"))
+    port = int(os.environ.get("PORT") or "10000")
     host = os.environ.get("HOST", "0.0.0.0")
     server = ThreadingHTTPServer((host, port), QuizHandler)
     print(f"Serving on http://{host}:{port}")
